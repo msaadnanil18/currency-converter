@@ -1,4 +1,4 @@
-import React , {useId} from 'react'
+import React , {useId, useState} from 'react'
 import { Button, Card, Input, Select, Space  } from 'antd'
 
 function InputBox({
@@ -15,6 +15,14 @@ function InputBox({
 }) {
 
     const amountInputId = useId()
+    // const[options, setOptions] = useState([])
+
+    // const GetOptions = () => {
+    //   currncyOptions.map((optio) => setOptions(optio) )
+    // }
+   
+    // GetOptions()
+    
   return (
     <>
       <label htmlFor={amountInputId}>
@@ -32,15 +40,12 @@ function InputBox({
   <Select
      value={selectCurrency}
       style={{ width: 120 }}
-      onChange={(e) => onAmountChange && onAmountChange(e.target.value)}
+      onChange={onAmountChange}
       disabled = {currencyDisable}
-      options={[
-        <div>{currncyOptions.map((currency) => {})}</div>
-      ]}
-     
-    >
-        {currncyOptions.map((currency) => {})} 
-        </Select>   
+      options={currncyOptions.map((option) => ({ label: option, value: option }))}
+    
+     />
+       
 
     </>
   )

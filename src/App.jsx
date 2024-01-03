@@ -3,12 +3,28 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import UseCurrencyInfo from './hook/UseCurrencyInfo'
+import { Button, Card, Input, Select, Space  } from 'antd'
+import InputBox from './components/InputBox'
+
 
 function App() {
 const [form , setForm] = useState("usd")
-
+const [convertedAmount, setConvertedAmount] = useState(0)
+const [amount, setAmount] = useState(0)
+const [to, setTo] = useState("inr")
 const currencyInfo = UseCurrencyInfo(form)
+// console.log(currencyInfo)
 
+const options = Object.keys(currencyInfo)
+// console.log(options)
+
+const convert = () => {
+  setConvertedAmount(amount * currencyInfo[to])
+}
+ const onAmountChange = (value) => {
+  setAmount(value)
+  
+ }
   return (
     <>
      <div className=' bg-slate-500 text-2xl font-bold rounded-2xl'>
@@ -22,7 +38,16 @@ const currencyInfo = UseCurrencyInfo(form)
           e.preventDefault
           
         }}
-        ></form>
+        >
+          <InputBox 
+          label={to}
+           amount={convertedAmount}
+          currncyOptions={options}
+          onCurrencyChange={(currency) => setAmount(currency) }
+          selectCurrency={form}
+          onAmountChange={onAmountChange}
+          />
+        </form>
      </Card>
     </>
   )
