@@ -21,10 +21,13 @@ const options = Object.keys(currencyInfo)
 const convert = () => {
   setConvertedAmount(amount * currencyInfo[to])
 }
- const onAmountChange = (value) => {
-  setAmount(value)
+//  const onAmountChange = (e) => {
+ 
   
- }
+//   setAmount(e.target.value)
+//  }
+
+ 
   return (
     <>
      <div className=' bg-slate-500 text-2xl font-bold rounded-2xl'>
@@ -41,12 +44,22 @@ const convert = () => {
         >
           <InputBox 
           label={to}
+           amount={amount}
+          currncyOptions={options}
+          onCurrencyChange={(currency) => setForm(currency) }
+          selectCurrency={form}
+          onAmountChange={setAmount}
+          />
+
+          <InputBox 
+          label={to}
            amount={convertedAmount}
           currncyOptions={options}
-          onCurrencyChange={(currency) => setAmount(currency) }
-          selectCurrency={form}
-          onAmountChange={onAmountChange}
+          onCurrencyChange={(currency) => setTo(currency)}
+          selectCurrency={to}
+          amountDisable
           />
+          <Button onClick={convert} type='primary' >convert</Button>
         </form>
      </Card>
     </>

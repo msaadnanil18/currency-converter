@@ -26,7 +26,7 @@ function InputBox({
   return (
     <>
       <label htmlFor={amountInputId}>
-        {label}
+        
       </label>
      <input
       id={amountInputId}
@@ -34,13 +34,13 @@ function InputBox({
       placeholder="amount"
       disabled= {amountDisable}
       value={amount}
-      onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))}      
+      onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))}    
      />
 
   <Select
      value={selectCurrency}
       style={{ width: 120 }}
-      onChange={onAmountChange}
+      onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
       disabled = {currencyDisable}
       options={currncyOptions.map((option) => ({ label: option, value: option }))}
     
