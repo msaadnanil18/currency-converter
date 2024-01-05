@@ -40,7 +40,7 @@ function InputBox({
   <Select
      value={selectCurrency}
       style={{ width: 120 }}
-      onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
+      onChange={(e) => (onCurrencyChange(e))}
       disabled = {currencyDisable}
       options={currncyOptions.map((option) => ({ label: option, value: option }))}
     

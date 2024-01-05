@@ -46,20 +46,20 @@ const convert = () => {
           label={to}
            amount={amount}
           currncyOptions={options}
-          onCurrencyChange={(currency) => setForm(currency) }
+          onCurrencyChange={setForm}
           selectCurrency={form}
           onAmountChange={setAmount}
           />
 
           <InputBox 
           label={to}
-           amount={convertedAmount}
+          amount={convertedAmount}
           currncyOptions={options}
           onCurrencyChange={(currency) => setTo(currency)}
           selectCurrency={to}
           amountDisable
           />
-          <Button onClick={convert} type='primary' >convert</Button>
+          <Button onClick={convert}  type="primary" >convert</Button>
         </form>
      </Card>
     </>
