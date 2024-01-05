@@ -1,8 +1,7 @@
-import React , {useId, useState} from 'react'
-import { Button, Card, Input, Select, Space  } from 'antd'
+import React , {useId} from 'react'
+import { Row, Col, InputNumber, Select, Space  } from 'antd'
 
 function InputBox({
-    label,
     amount,
     onAmountChange,
     onCurrencyChange,
@@ -10,42 +9,37 @@ function InputBox({
     selectCurrency = "usd",
     amountDisable = false,
     currencyDisable= false,
-    className="",
+    
 
 }) {
 
     const amountInputId = useId()
-    // const[options, setOptions] = useState([])
-
-    // const GetOptions = () => {
-    //   currncyOptions.map((optio) => setOptions(optio) )
-    // }
-   
-    // GetOptions()
+  
     
   return (
     <>
-      <label htmlFor={amountInputId}>
-        
-      </label>
-     <input
+     <Row className=' space-y-3' >
+      <Col span={12} >
+     <InputNumber
+     className='mt-2'
       id={amountInputId}
-      type='number' 
       placeholder="amount"
       disabled= {amountDisable}
       value={amount}
-      onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))}    
+      onChange={(e) => onAmountChange && onAmountChange(e)}    
      />
-
+    </Col>
+    <Col span={12} >
   <Select
+  className=' float-right'
      value={selectCurrency}
       style={{ width: 120 }}
       onChange={(e) => (onCurrencyChange(e))}
       disabled = {currencyDisable}
       options={currncyOptions.map((option) => ({ label: option, value: option }))}
-    
      />
-       
+     </Col>
+       </Row>
 
     </>
   )
